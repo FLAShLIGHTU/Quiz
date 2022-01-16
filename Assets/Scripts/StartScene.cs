@@ -16,5 +16,5 @@ public class StartScene : MonoBehaviour
   {
     SceneManager.LoadScene("GameOverScene");
   }
-  //HelloWorld
+  
 }
