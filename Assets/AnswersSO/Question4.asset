@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9066e596bfacbc54dac8e3741979d392, type: 3}
+  m_Name: Question4
+  m_EditorClassIdentifier: 
+  question: "\u0412 \u043A\u0430\u043A\u043E\u043C \u0433\u043E\u0434\u0443 \u043F\u043E\u044F\u0432\u0438\u043B\u0441\u044F
+    \u043C\u0435\u043C Troll Face ?"
+  answer1: 2007
+  answer2: 2008
+  answer3: 2009
+  answer4: 2012
+  nextAnswer: {fileID: 11400000, guid: e215858c666de46e9be7420c35336ff3, type: 2}
+  locationImage: {fileID: 21300000, guid: fe18ff8928b694375b86ab7325dcc026, type: 3}
+  rightAnswerIs: 2
+  questionNumber: 4

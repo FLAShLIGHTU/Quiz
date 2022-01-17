@@ -1,102 +1,110 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameScene : MonoBehaviour
 {
-  public Text ContentQuestion;
-  public Image QuestionImage;
-  public QuestionSO GameStart;
-  public Text Answer1;
-  public Text Answer2;
-  public Text Answer3;
-  public Text Answer4;
-  public Text GameOverText;
+    #region Variables
 
-  public QuestionSO _currentQuestion;
-  private int RightAnswers;
-  private int CountRight;
-  private int CountWrong;
-  private int _questNumber;
+    public Text contentQuestion;
+    public Image questionImage;
+    public QuestionSO gameStart;
+    public Text answer1;
+    public Text answer2;
+    public Text answer3;
+    public Text answer4;
 
-  public void Start()
-  {
-    CurrentQuestion(GameStart);
-  }
+    private QuestionSO _currentQuestion;
+    private int _userAnswers;
+    private int _countRight;
+    private int _countWrong;
+    private int _questNumber;
 
-  public void Update()
-  {
-  }
+    #endregion
 
-  public void CurrentQuestion(QuestionSO nextQuestion)
-  {
-    _currentQuestion = nextQuestion;
-    ContentQuestion.text = _currentQuestion.Question;
-    QuestionImage.sprite = _currentQuestion.LocationImage;
-    Answer1.text = _currentQuestion._Answer1;
-    Answer2.text = _currentQuestion._Answer2;
-    Answer3.text = _currentQuestion._Answer3;
-    Answer4.text = _currentQuestion._Answer4;
-    RightAnswers = _currentQuestion.Answers;
-    _questNumber = _currentQuestion.QuestionNumber;
-    IsGameOver();
-    Debug.Log($"{CountRight}");
-    Debug.Log($"{CountWrong}");
-  }
+    #region UnityLifeCycle
 
-  public void OnClick()
-  {
-    CurrentQuestion(_currentQuestion.Answer);
-    IsRightAnswer();
-  }
-
-  public void IsRightAnswer()
-  {
-    if (_currentQuestion.Answers == RightAnswers)
+    public void Start()
     {
-      CountRight++;
-    }
-    else
-    {
-      CountWrong++;
-    }
-  }
-
-  public void IsGameOver()
-  {
-    if (_questNumber == 6)
-    {
-      SceneManager.LoadScene("GameOverScene");
+        CurrentQuestion(gameStart);
     }
 
-    return;
-  }
+    public void Update()
+    {
+    }
+
+    #endregion
+
+    #region PublicMethods
+
+    public void CurrentQuestion(QuestionSO nextQuestion)
+    {
+        _currentQuestion = nextQuestion;
+        contentQuestion.text = _currentQuestion.question;
+        questionImage.sprite = _currentQuestion.locationImage;
+        answer1.text = _currentQuestion.answer1;
+        answer2.text = _currentQuestion.answer2;
+        answer3.text = _currentQuestion.answer3;
+        answer4.text = _currentQuestion.answer4;
+        _userAnswers = _currentQuestion.rightAnswerIs;
+        _questNumber = _currentQuestion.questionNumber;
+        IsGameOver();
+        Debug.Log($"{_countRight}");
+        Debug.Log($"{_countWrong}");
+    }
+
+    public void OnClick()
+    {
+        CurrentQuestion(_currentQuestion.nextAnswer);
+        IsRightAnswer();
+    }
+
+    public void IsRightAnswer()
+    {
+        if (_currentQuestion.rightAnswerIs == _userAnswers)
+        {
+            _countRight++;
+        }
+        else
+        {
+            _countWrong++;
+        }
+    }
+
+    public void IsGameOver()
+    {
+        if (_questNumber == 6)
+        {
+            SceneManager.LoadScene("GameOverScene");
+        }
+    }
 
 
-  public void ClickAnswer(QuestionSO nextQuestion)
-  {
-    CurrentQuestion(nextQuestion);
-  }
+    public void ClickAnswer(QuestionSO nextQuestion)
+    {
+        CurrentQuestion(nextQuestion);
+    }
 
-  public void SetRightAnswer1()
-  {
-    RightAnswers = 1;
-  }
+    public void SetRightAnswer1()
+    {
+        _userAnswers = 1;
+    }
 
-  public void SetRightAnswer2()
-  {
-    RightAnswers = 2;
-  }
+    public void SetRightAnswer2()
+    {
+        _userAnswers = 2;
+    }
 
-  public void SetRightAnswer3()
-  {
-    RightAnswers = 3;
-  }
+    public void SetRightAnswer3()
+    {
+        _userAnswers = 3;
+    }
 
-  public void SetRightAnswer4()
-  {
-    RightAnswers = 4;
-  }
+    public void SetRightAnswer4()
+    {
+        _userAnswers = 4;
+    }
+
+    #endregion
 }
